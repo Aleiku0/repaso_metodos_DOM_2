@@ -1,10 +1,17 @@
 const lista = document.getElementById("lista");
 const liTemplate = document.getElementById("liTemplate");
+// const clone = liTemplate.content.cloneNode(true);//clonando template
+const arrayFrutas = ["Manzana","Naranja","Kiwi"];
+const fragment = document.createDocumentFragment();
 
-const clone = liTemplate.content.cloneNode(true);//clonando template
 
-const span = clone.querySelector(".text-primary");
 
-span.textContent = "agregado a través de un template";
+arrayFrutas.forEach(fruta => {
 
-console.log(clone);
+    const clone = liTemplate.content.cloneNode(true)
+    clone.querySelector(".text-primary").textContent = fruta;
+    fragment.appendChild(clone);
+
+});
+
+lista.appendChild(fragment);
